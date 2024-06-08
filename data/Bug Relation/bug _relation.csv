@@ -1,0 +1,51 @@
+entity1,entity2,relation
+Intel,Xeon,interaction/control
+Ubuntu,USB,interaction/control
+Ubuntu,x86_64,affected version
+Fedora,Ubuntu,interaction/control
+nvidia-340,virtualbox,interaction/control
+Intel,Linux,interaction/control
+Intel Corporation Skylake Integrated Graphics,Dell Inc. XPS 15 9550,interaction/control
+initramfs-tools,dmi,interaction/control
+Ubuntu 16.04,network-manager-gnome,dependency
+dmi,initramfs-tools,cause and effect
+python-virtualenv,code,cause and effect
+xubuntu,xfce,dependency
+splash,source,cause and effect
+Xenial,kernel,dependency
+i386,GNOME,dependency
+drag,touchpad,interaction/control
+splash,dmi,cause and effect
+Ubuntu,windows,interaction/control
+Driver,uuid,dependency
+RfKill,Wireless LAN,cause and effect
+system,VGA,dependency
+desktop,Ubuntu,interaction/control
+Ceph,Swift,interaction/control
+Ubuntu,i686,affected version
+ureadahead,ufw,dependency
+Ubuntu,i686,affected version
+command-not-found,bug report,cause and effect
+Ubuntu,ppc,dependency
+initramfs-tools,Firefox,cause and effect
+Ubuntu 15.10,x86_64,dependency
+xorg,compiz,dependency
+Linux,memory,cause and effect
+Ubuntu 16.04\n,hplip-data,dependency
+usb-creator-gtk,usb-creator,dependency
+login,Bacula,cause and effect
+Ubuntu 16.04,KDE,dependency
+linux-image-4.4.0-21-generic,Ubuntu 16.04,dependency
+xinput,Touchpad,cause and effect
+qemu,FLEX,cause and effect
+systemd,Ubuntu,affected version
+linux-firmware,yakkety,affected version
+click,finger,interaction/control
+initramfs-tools,PulseAudio,cause and effect
+Ubuntu 16.04,Hewlett-Packard,interaction/control
+Ubuntu,amd64,affected version
+Xdummy,xpra,interaction/control
+Ubuntu,x86_64,affected version
+network-manager,ethernet,affected version
+Foxconn,Hewlett-Packard,interaction/control
+update,pulseaudio,cause and effect

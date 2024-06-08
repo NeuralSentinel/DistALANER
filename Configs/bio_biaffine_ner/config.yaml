@@ -1,0 +1,56 @@
+data_collator: SpanExtractionDataCollatorWithPadding
+dataset:
+  data_file:
+    test: /home/somnath-am/sr_drive/Avik/adaseq/dataset/bio/test.txt
+    train: /home/somnath-am/sr_drive/Avik/adaseq/dataset/bio/train.txt
+    valid: /home/somnath-am/sr_drive/Avik/adaseq/dataset/bio/dev.txt
+  data_type: conll
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 1
+  metrics: span-extraction-metric
+experiment:
+  exp_dir: experiments/
+  exp_name: bio_biaffine_ner
+  seed: 42
+model:
+  biaffine_ffnn_size: 150
+  dropout: 0.2
+  embedder:
+    model_name_or_path: xlm-roberta-large
+  flat_ner: true
+  id_to_label:
+    0: Architecture
+    1: Command
+    2: Error_description
+    3: Error_name
+    4: Extension
+    5: New_Command
+    6: OS
+    7: Organization
+    8: Package
+    9: Peripheral
+    10: Software_Component
+  type: biaffine-ner-model
+preprocessor:
+  max_length: 512
+  model_dir: xlm-roberta-large
+  type: span-extraction-preprocessor
+task: named-entity-recognition
+train:
+  dataloader:
+    batch_size_per_gpu: 1
+  lr_scheduler:
+    type: constant
+  max_epochs: 20
+  optimizer:
+    eps: 1.0e-08
+    lr: 0.001
+    param_groups:
+    - lr: 1.0e-05
+      regex: .*transformer_model((?!(bias|LayerNorm)).)*$
+    - lr: 1.0e-05
+      regex: .*transformer_model.*(bias|LayerNorm)
+      weight_decay": 0
+    type: AdamW
+    weight_decay: 0.01

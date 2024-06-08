@@ -1,0 +1,91 @@
+data_collator: SequenceLabelingDataCollatorWithPadding
+dataset:
+  data_file:
+    test: /home/somnath-am/sr_drive/Avik/NER_Baselines/adaseq/dataset/bio/test.txt
+    train: /home/somnath-am/sr_drive/Avik/NER_Baselines/adaseq/dataset/bio/train.txt
+    valid: /home/somnath-am/sr_drive/Avik/NER_Baselines/adaseq/dataset/bio/dev.txt
+  data_type: conll
+evaluation:
+  dataloader:
+    batch_size_per_gpu: 1
+  metrics:
+  - type: ner-metric
+  - dump_format: conll
+    model_type: sequence_labeling
+    type: ner-dumper
+experiment:
+  exp_dir: experiments/
+  exp_name: bio_bert_crf
+  seed: 42
+model:
+  dropout: 0.1
+  embedder:
+    model_name_or_path: xlm-roberta-large
+  id_to_label:
+    0: O
+    1: B-Architecture
+    2: I-Architecture
+    3: E-Architecture
+    4: S-Architecture
+    5: B-Command
+    6: I-Command
+    7: E-Command
+    8: S-Command
+    9: B-Error_description
+    10: I-Error_description
+    11: E-Error_description
+    12: S-Error_description
+    13: B-Error_name
+    14: I-Error_name
+    15: E-Error_name
+    16: S-Error_name
+    17: B-Extension
+    18: I-Extension
+    19: E-Extension
+    20: S-Extension
+    21: B-New_Command
+    22: I-New_Command
+    23: E-New_Command
+    24: S-New_Command
+    25: B-OS
+    26: I-OS
+    27: E-OS
+    28: S-OS
+    29: B-Organization
+    30: I-Organization
+    31: E-Organization
+    32: S-Organization
+    33: B-Package
+    34: I-Package
+    35: E-Package
+    36: S-Package
+    37: B-Peripheral
+    38: I-Peripheral
+    39: E-Peripheral
+    40: S-Peripheral
+    41: B-Software_Component
+    42: I-Software_Component
+    43: E-Software_Component
+    44: S-Software_Component
+  type: sequence-labeling-model
+  use_crf: true
+preprocessor:
+  max_length: 512
+  model_dir: xlm-roberta-large
+  type: sequence-labeling-preprocessor
+task: named-entity-recognition
+train:
+  dataloader:
+    batch_size_per_gpu: 2
+  lr_scheduler:
+    end_factor: 0.0
+    start_factor: 1.0
+    total_iters: 20
+    type: LinearLR
+  max_epochs: 1
+  optimizer:
+    lr: 5.0e-06
+    param_groups:
+    - lr: 0.05
+      regex: crf
+    type: AdamW
